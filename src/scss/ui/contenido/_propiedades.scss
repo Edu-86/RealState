@@ -3,11 +3,9 @@
 
 .propiedades{
     margin-top: 5rem;
-
     @include m.tablet {
         margin-top: 10rem;
     }
-
     &__heading{
         @include m.heading;
     }
@@ -25,7 +23,7 @@
 
     &__imagen{
         aspect-ratio: 10 / 6;
-        background-size: cover;
+        background-size: auto 150%;
         position: relative;
        
     }
