@@ -13,6 +13,9 @@
     &__grid{
         @include m.grid(1, 2rem);
         @include m.tablet {
+            @include m.grid(2, 2rem);
+        }
+        @include m.desktop {
             @include m.grid(3, 2rem);
         }
     }
@@ -23,18 +26,35 @@
 
     &__imagen{
         aspect-ratio: 10 / 6;
-        background-size: auto 150%;
         position: relative;
+        background-size: auto 150%;
+
+        @include m.tablet {
+            background-size: auto 150%;
+        }
        
     }
        
     @for $i from 1 through 6 {
         $imagen: '../img/propiedad_' + $i + '.jpg';
-        
-        &:nth-child(#{$i}) &__imagen{
-               background-image:linear-gradient(to bottom, transparentize(v.$negro, 1%) 0%, transparentize(v.$negro, .3%) 100% ) ,url($imagen) ; 
+    
+        &:nth-child(#{$i}) &__imagen {
+          background-image: linear-gradient(to bottom, transparentize(v.$negro, 1%) 0%, transparentize(v.$negro, 0.3%) 100%), url($imagen);
+          background-image: url($imagen);
+          background-repeat: no-repeat;
+          position: relative;
         }
-    }
+    
+        &:nth-child(#{$i}) &__imagen::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-color: rgba(0, 0, 0, 0.5);
+        }
+      }
 
     &__nombre{
         position: absolute;
